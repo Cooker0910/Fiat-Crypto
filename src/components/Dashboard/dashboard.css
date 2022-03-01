@@ -1,0 +1,11 @@
+.dash-info h5, p {
+  text-align: left;
+}
+.dash-info p {
+  height: auto !important;
+}
+
+.dash-info .env {
+  display: flex;
+}
+

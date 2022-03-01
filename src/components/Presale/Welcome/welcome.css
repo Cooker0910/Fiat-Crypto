@@ -1,0 +1,14 @@
+/* WELCOME */
+.welcome {
+    background-image: url('../../../images/dgtl.jpg');
+    background-size: cover;
+    background-position: center center;
+    padding: 130px 75px;
+    color: #fff;
+}
+
+@media(max-width: 414px) {
+    .welcome {
+        padding: 20px 10px;
+    }
+}

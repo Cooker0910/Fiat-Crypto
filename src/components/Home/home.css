@@ -1,0 +1,76 @@
+
+
+/* SAFE BLOCK */
+.safeBlock img {
+    height: 50px;
+}
+
+.safeBlock p {
+    height: 130px;
+}
+
+/* TEAM */
+.sectionTitle {
+    position: relative;
+}
+
+.sectionTitle h2 {
+    position: absolute;
+    top: 65px;
+    left: 0;
+    right: 0;
+}
+
+.sectionTitle p {
+    margin-top: -50px;
+}
+
+h1.bigNum {
+    font-size: 10rem;
+    opacity: 0.1;
+}
+
+.stats {
+    background: linear-gradient(0deg, rgb(48 6 73), rgb(41 3 67 / 51%)), url(../../images/dgtl.jpg);
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    padding: 130px 75px;
+}
+
+@media(max-width: 414px) {
+    .stats {
+        padding: 60px 30px;
+    }
+}
+
+/* CONTACT */
+.contact {
+    background: linear-gradient(0deg, rgb(48 6 73), rgb(41 3 67 / 51%)), url(../../images/dgtl.jpg);
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    padding: 130px 75px;
+}
+
+.contactBlockGroup {
+    background: #0000006b;
+}
+
+.contactBlock p {
+    height: 145px;
+}
+
+@media(max-width: 414px) {
+    .contact {
+        padding: 60px 30px;
+    }
+
+    .contact form {
+        padding: 0 !important;
+    }
+
+    .contact form button {
+        padding: 1rem !important;
+    }
+}

@@ -1,0 +1,11 @@
+/* GENERAL CSS */
+.App {
+    background-image: url('./images/background1.svg');
+    background-size: contain;
+    background-repeat: repeat;
+    font-family: 'Nunito', sans-serif;
+}
+
+.fs-b {
+    font-size: 3.25rem;
+}

@@ -1,0 +1,44 @@
+#connectWallet .modal-content {
+    border-radius: 15px;
+}
+
+#connectWallet .modal-dialog {
+    top: 100px;
+}
+
+#connectWallet .modal-header {
+    background: #f4f4f5;
+    padding: 12px 20px 16px;
+    border-bottom: none;
+    border-radius: 15px;
+}
+
+#connectWallet h5 {
+    color: #222;
+    font-weight: 700;
+}
+
+.wallet_body a {
+    display: block;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    padding: 14px 18px;
+    color: #fff;
+    background: #003770;
+    text-decoration: none;
+}
+
+.wallet_body a:hover {
+    background: #003770;
+}
+
+.wallet_body {
+    padding: 40px 40px 30px;
+}
+
+.wallet_body a i {
+    float: right;
+    color: #fff;
+    font-size: 18px;
+    line-height: 27px;
+}

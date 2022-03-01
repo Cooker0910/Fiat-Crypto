@@ -1,0 +1,25 @@
+.block {
+    background-color: #ffffff8f;
+    padding: 30px 30px;
+    border-radius: 10px;
+}
+
+.block p {
+    min-height: 110px;
+}
+
+.learnColLast p {
+    min-height: 70px;
+}
+
+.block a {
+    text-decoration: none;
+    color: #212529;
+}
+
+@media(max-width: 414px) {
+
+    .block {
+        padding: 10px 30px;
+    }
+}
