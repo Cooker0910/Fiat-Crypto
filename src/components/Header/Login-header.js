@@ -1,8 +1,6 @@
 import './header.css';
 import logo from '../../images/logo.png';
-import {Link} from 'react-router-dom';
-import {useLocation} from 'react-router-dom';
-import { useNavigate } from "react-router-dom";
+import {Link, useLocation, useNavigate} from 'react-router-dom';
 import { cleaarUser } from '../../api';
 
 
@@ -15,6 +13,7 @@ function LoginHeader()
 
   let navigate = useNavigate(); 
   const routeChange = (url, data) =>{ 
+    console.log('-------------',url, '\n', data, '-----')
     let path = url; 
     if (userID === undefined) {
       navigate({pathname: path, state: data});  
@@ -71,8 +70,12 @@ function LoginHeader()
               <li className="nav-item">
                 <a className="nav-link fw-bold fs-5 pointer" onClick={()=> routeChange('/profile')}>Profile |</a>
               </li>
-              <li className="nav-item">
-                  <a className="nav-link fw-bold fs-5 pointer" onClick={()=> routeChange('/plan')}>My Investment |</a>
+              <li className="nav-item dropdown">
+                  <a className="nav-link fw-bold fs-5 pointer" data-bs-toggle="dropdown" role="button" aria-expanded="false">My Investment |</a>
+                  <ul className='dropdown-menu'>
+                    <li><a className='dropdown-item' onClick={()=> routeChange('/invest')}>Invest</a></li>
+                    <li><a className='dropdown-item' onClick={()=> routeChange('/stake')}>Stake</a></li>
+                  </ul>
               </li>
               <li className="nav-item">
                   <a className="nav-link fw-bold fs-5 pointer" onClick={()=> routeChange('/supportcenter')}>My Support Center |</a>

@@ -13,6 +13,8 @@ import Register from './components/Account/signup';
 import Verify from './components/Presale/Profile/verify';
 import Dashboard from './components/Dashboard/dashboard';
 import Plan from './components/Dashboard/Plan';
+import Invest from './components/Staking/Investing';
+import Stake from './components/Staking/Staking';
 
 import 'dotenv/config';
 
@@ -45,6 +47,8 @@ function App() {
             <Route path="/profile" element={<Profile />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/plan" element={<Plan />} />
+            <Route path="/invest" element={<Invest />} />
+            <Route path="/stake" element={<Stake />} />
             <Route path="/kyc" element={<Kyc />} />
           </Routes>
           <Footer />

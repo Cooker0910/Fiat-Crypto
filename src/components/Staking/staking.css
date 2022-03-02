@@ -1,0 +1,118 @@
+hr {
+  border-top-width: 1px;
+  border-color: rgba(0, 0, 0, 0.12);
+  margin: 0;
+}
+.css1 {
+  box-sizing: border-box;
+  display: flex;
+  flex-flow: row wrap;
+  margin-top: -32px;
+  width: calc(100% + 32px);
+  margin-left: -32px;
+}
+.css2 {
+  padding-left: 65px;
+  box-sizing: border-box;
+  margin: 0px;
+  flex-direction: row;
+  -webkit-box-flex: 0;
+  flex-grow: 0;
+  max-width: 100%;
+}
+.css3:hover{
+  transform: scale(1.03);
+}
+.css3 {
+  padding: 8px;
+  box-shadow: rgb(0 0 0 / 20%) 0px 3px 5px -1px, rgb(0 0 0 / 14%) 0px 6px 10px 0px, rgb(0 0 0 / 12%) 0px 1px 18px 0px;
+  border-radius: 24px;
+  background-position: right top;
+  background-size: 30%;
+  background-repeat: no-repeat;
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+.css12 {
+  padding: 6%;
+  text-align: center;
+}
+.css23 {
+  margin: 0px 0px 0.35em;
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  font-size: 1.5rem;
+  line-height: 1.334;
+  letter-spacing: 0em;
+  color: rgb(108, 144, 147);
+  text-align: center;
+}
+.css4 {
+  margin: 0px;
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  font-size: 1.25rem;
+  line-height: 1.6;
+  letter-spacing: 0.0075em;
+  color: gray;
+  text-align: center;
+}
+.css5 {
+  margin: 0px;
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  font-size: 1.5rem;
+  line-height: 1.334;
+  letter-spacing: 0em;
+  text-align: center;
+}
+.css6 {
+  margin: 0px;
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 1.6;
+  letter-spacing: 0.0075em;
+  color: gray;
+  text-align: center;
+}
+.flex {
+  border: 6px solid rgb(108, 144, 147);
+}
+.bronze {
+  border: 6px solid rgb(227, 202, 179);
+}
+.silver {
+  border: 6px solid rgb(230, 232, 241);
+}
+.gold {
+  border: 6px solid rgb(225, 211, 84);
+}
+.annual {
+  text-align: center;
+  font-size: 30px;
+  margin-top: 20px;
+}
+.wrap-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
+}
+.wrap-btn button {
+  padding: 5px 30px;
+  font-size: 23px;
+  color: #ffffff;
+  background-color: #dc3545;
+  border: none;
+  display: inline-block;
+  line-height: 40px;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  opacity: 0.85;
+  cursor: pointer;
+}
+.wrap-btn button:hover{
+  opacity: 1;
+}
