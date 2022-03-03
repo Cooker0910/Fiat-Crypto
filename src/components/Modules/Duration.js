@@ -18,7 +18,11 @@ const Duration = (props) => {
             <h6 className="unlock">Unlock Duration</h6>
             <h5 className="month"> {props.month}  </h5><br></br>
             <hr></hr><br></br>
-            <h6 className="interest">Intersts paid {props.interest} times</h6>
+            {props.interest ? 
+              <h6 className="interest">Intersts paid {props.interest} times</h6>
+            :
+              <h6 className='interest'>Intersts paid daily</h6>
+            }
             <hr></hr>
             <div></div>
           </div>

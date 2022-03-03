@@ -5,7 +5,7 @@ const durations = [
     intersts: 2
   },
   {
-    type: "BROZNE",
+    type: "BRONZE",
     month: "3 Months",
     intersts: 2
   },

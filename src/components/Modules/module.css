@@ -28,7 +28,7 @@
   margin: 0px 0px 0.35em;
   font-family: Roboto, Helvetica, Arial, sans-serif;
   font-weight: 400;
-  font-size: 1.5rem;
+  font-size: 1.1rem;
   line-height: 1.334;
   letter-spacing: 0em;
   color: rgb(108, 144, 147);
@@ -44,7 +44,10 @@
   color: gray;
   text-align: center;
 }
-.month {
+.stake {
+  font-size: 1rem !important;
+}
+.amount {
   margin: 0px;
   font-family: Roboto, Helvetica, Arial, sans-serif;
   font-weight: 400;
