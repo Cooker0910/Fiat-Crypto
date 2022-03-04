@@ -13,11 +13,14 @@ const Stake = () => {
   const [myBalance, setMyBalance] = useState(0);
   const [duration, setDuration] = useState(0);
   const [amount, setAmount] = useState(0);
-  const [walletStatus, setWalletStatue] = useState(false)
+  const [walletStatus, setWalletStatue] = useState(false);
+  const [stakingAmount, setStakingAmount] = useState(0);
 
   const borderStyle = ["flex", "bronze", "silver", "gold"]
   const borderStyle1 = ["flex", "bronze", "gold"]
   const busdAddress = '0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56';
+  const web3 = new Web3(window.ethereum);
+  const contract = new web3.eth.Contract(abi, busdAddress);
 
   const changeType = (idx) => {
     setDuration(idx);
@@ -27,7 +30,6 @@ const Stake = () => {
   }
   const connectWallet = async() => {
     if (typeof window.ethereum !== 'undefined') {
-      const web3 = new Web3(window.ethereum);
       try {
         if (window.ethereum) {
           await window.ethereum.enable();
@@ -58,9 +60,8 @@ const Stake = () => {
             }
             console.error(error);
           }
-        
+          
           const accounts =  await web3.eth.getAccounts();
-          const contract = new web3.eth.Contract(abi, busdAddress);
           const balance = await contract.methods.balanceOf(accounts[0]).call();
           const address = accounts[0].slice(0, 5) + '...'+ accounts[0].slice(-4, accounts[0].length)
           setWalletAddress(address);
@@ -71,6 +72,11 @@ const Stake = () => {
         return false;
       }
     }
+  }
+
+  const staking = async() => {
+    console.log(stakingAmount)
+    await contract.methods.approve(walletAddress, myBalance)
   }
 
   return (
@@ -149,14 +155,14 @@ const Stake = () => {
           <div className='row mt-5'>
             <p>Enter amount of token to Stake</p>
             <div id='amountDiv'>
-              <input type="number" name='amount' id="amount" placeholder='Enter Amount' autoComplete='off' />
+              <input type="number" name='amount' id="amount" placeholder='Enter Amount' autoComplete='off' onChange={(e) =>setStakingAmount(e.target.value)} />
             </div>
           </div>
           <div className='annual'>
             <span>Your annual interest will be </span><span>12 %</span>
           </div>
           <div className='wrap-btn'>
-            <button>Stake</button>
+            <button onClick={staking}>Stake</button>
           </div>
         </div>
       </div>
