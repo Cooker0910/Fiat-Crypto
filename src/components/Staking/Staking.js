@@ -6,39 +6,59 @@ import Amount from '../Modules/Amount';
 import durations from '../utils/duration';
 import stakeAmount from '../utils/stakeAmount';
 import abi from '../utils/abi.json';
+import testAbi from '../utils/testAbi.json';
+import stakingAbi from '../utils/stakingAbi.json';
 
 const Stake = () => {
 
   const [walletAddress, setWalletAddress] = useState('');
+  const [myAddress, setMyaddress] = useState('');
   const [myBalance, setMyBalance] = useState(0);
+  const [realBalance, setRealBalance] = useState(0);
   const [duration, setDuration] = useState(0);
   const [amount, setAmount] = useState(0);
   const [walletStatus, setWalletStatue] = useState(false);
   const [stakingAmount, setStakingAmount] = useState(0);
+  const [approveStatus, setApproveStatus] = useState(false);
+  const [minValue, setMinValue] = useState(0);
+  const [maxValue, setMaxValue] = useState(2000);
 
   const borderStyle = ["flex", "bronze", "silver", "gold"]
   const borderStyle1 = ["flex", "bronze", "gold"]
   const busdAddress = '0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56';
+  const testBusdAddress = '0x7C1987977227fa66B072C3d9814E4082601637e4';
+  const stakingAddress = '0xe5a9f560bD0964602a4522E62C5827bB8d2424b0';
   const web3 = new Web3(window.ethereum);
-  const contract = new web3.eth.Contract(abi, busdAddress);
+  const contract = new web3.eth.Contract(testAbi, testBusdAddress);
+  const stakeContract = new web3.eth.Contract(stakingAbi, stakingAddress);
 
   const changeType = (idx) => {
     setDuration(idx);
   }
   const changeAmount = (idx) => {
     setAmount(idx);
+    console.log(typeof idx)
+    if(idx === 1) {
+      setMinValue(2001);
+      setMaxValue(5000)
+    } else if(idx === 2) {
+      setMinValue(5001)
+      setMaxValue(10000);
+    } else {
+      setMinValue(0);
+      setMaxValue(2000);
+    }
   }
   const connectWallet = async() => {
     if (typeof window.ethereum !== 'undefined') {
       try {
         if (window.ethereum) {
           await window.ethereum.enable();
-          console.log('sfasdfasd')
           try {
             // check if the chain to connect to is installed
             await window.ethereum.request({
               method: 'wallet_switchEthereumChain',
-              params: [{ chainId: '0x38' }], // chainId must be in hexadecimal numbers
+              params: [{ chainId: '0x61' }], // chainId must be in hexadecimal numbers
             });
           } catch (error) {
             // This error code indicates that the chain has not been added to MetaMask
@@ -49,7 +69,7 @@ const Stake = () => {
                   method: 'wallet_addEthereumChain',
                   params: [
                     {
-                      chainId: '0x38',
+                      chainId: '0x61',
                       rpcUrl: 'https://bsc-dataseed1.defibit.io/',
                     },
                   ],
@@ -64,9 +84,12 @@ const Stake = () => {
           const accounts =  await web3.eth.getAccounts();
           const balance = await contract.methods.balanceOf(accounts[0]).call();
           const address = accounts[0].slice(0, 5) + '...'+ accounts[0].slice(-4, accounts[0].length)
+          setMyaddress(accounts[0]);
           setWalletAddress(address);
           setMyBalance(balance/1000000000000000000);
-          setWalletStatue(true)
+          setRealBalance(balance);
+          setWalletStatue(true);
+          console.log(balance);
         }
       } catch (e) {
         return false;
@@ -75,10 +98,47 @@ const Stake = () => {
   }
 
   const staking = async() => {
-    console.log(stakingAmount)
-    await contract.methods.approve(walletAddress, myBalance)
+    console.log(stakingAmount, minValue, maxValue)
+    if (stakingAmount < minValue || stakingAmount > maxValue) {
+      alert(`You can staking between ${minValue} and ${maxValue}`);
+      return
+    }
+    if(!approveStatus) {
+      alert('Please approve fist to staking');
+      return;
+    }
+    if(stakingAmount === 0) {
+      alert('Staking balance is empty');
+      return;
+    }
+    if (myBalance > stakingAmount) {
+      console.log(stakingAmount);
+      await stakeContract.methods.staking(web3.utils.toWei(parseFloat(stakingAmount).toString(), "ether"))
+      .send({from: myAddress})
+      .then(function(res) {
+        console.log(res);
+      });
+    }
   }
 
+  const approve = async() => {
+    console.log(myAddress, stakingAmount);
+    await contract.methods
+      .approve('0xe5a9f560bD0964602a4522E62C5827bB8d2424b0', realBalance)
+      .send({from: myAddress})
+      .then(function(res) {
+        console.log('approved', res);
+        staking();
+        setApproveStatus(true);
+    })
+  }
+
+  // const init = () => {
+  //   setStakingAmount(0);
+  //   connectWallet()
+  // }
+  // init();
+  
   return (
     <>
       <div className='wallet'>
@@ -155,14 +215,23 @@ const Stake = () => {
           <div className='row mt-5'>
             <p>Enter amount of token to Stake</p>
             <div id='amountDiv'>
-              <input type="number" name='amount' id="amount" placeholder='Enter Amount' autoComplete='off' onChange={(e) =>setStakingAmount(e.target.value)} />
+              <input 
+                type="number" 
+                name='amount' 
+                id="amount" 
+                placeholder='Enter Amount'  
+                autoComplete='off' 
+                min={minValue}
+                max={maxValue}
+                onChange={(e) => setStakingAmount(e.target.value)} />
             </div>
           </div>
           <div className='annual'>
             <span>Your annual interest will be </span><span>12 %</span>
           </div>
           <div className='wrap-btn'>
-            <button onClick={staking}>Stake</button>
+            <button type='button' onClick={approve}>Approve</button>
+            <button type='button' onClick={staking}>Stake</button>
           </div>
         </div>
       </div>
