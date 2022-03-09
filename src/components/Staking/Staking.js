@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Web3 from 'web3';
 import './staking.css';
 import Duration from '../Modules/Duration';
@@ -32,6 +32,10 @@ const Stake = () => {
   const contract = new web3.eth.Contract(testAbi, testBusdAddress);
   const stakeContract = new web3.eth.Contract(stakingAbi, stakingAddress);
 
+  useEffect(() => {
+    connectWallet
+  }, [])
+
   const changeType = (idx) => {
     setDuration(idx);
   }
@@ -49,6 +53,7 @@ const Stake = () => {
       setMaxValue(2000);
     }
   }
+
   const connectWallet = async() => {
     if (typeof window.ethereum !== 'undefined') {
       try {
@@ -132,12 +137,6 @@ const Stake = () => {
         setApproveStatus(true);
     })
   }
-
-  // const init = () => {
-  //   setStakingAmount(0);
-  //   connectWallet()
-  // }
-  // init();
   
   return (
     <>

@@ -70,12 +70,15 @@ function LoginHeader()
               <li className="nav-item">
                 <a className="nav-link fw-bold fs-5 pointer" onClick={()=> routeChange('/profile')}>Profile |</a>
               </li>
-              <li className="nav-item dropdown">
+              {/* <li className="nav-item dropdown">
                   <a className="nav-link fw-bold fs-5 pointer" data-bs-toggle="dropdown" role="button" aria-expanded="false" data-bs-hover="dropdown">My Investment |</a>
                   <ul className='dropdown-menu'>
                     <li ><a className='dropdown-item' onClick={()=> routeChange('/invest')}>Invest</a></li>
                     <li><a className='dropdown-item' onClick={()=> routeChange('/stake')}>Stake</a></li>
                   </ul>
+              </li> */}
+              <li className="nav-item">
+                  <a className="nav-link fw-bold fs-5 pointer" onClick={()=> routeChange('/invest')}>My Investment |</a>
               </li>
               <li className="nav-item">
                   <a className="nav-link fw-bold fs-5 pointer" onClick={()=> routeChange('/supportcenter')}>My Support Center |</a>

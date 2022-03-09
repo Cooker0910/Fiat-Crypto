@@ -83,6 +83,9 @@ function Header()
                 <li className="nav-item">
                     <Link className="nav-link fw-bold fs-5" to="/presale">Presale</Link>
                 </li>
+                <li className="nav-item">
+                    <Link className="nav-link fw-bold fs-5" to="/staking">Launch App</Link>
+                </li>
               </ul>
               {
                 userdata.pathname == '/login' ? '' :

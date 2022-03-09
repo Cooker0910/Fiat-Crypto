@@ -48,7 +48,7 @@ function App() {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/plan" element={<Plan />} />
             <Route path="/invest" element={<Invest />} />
-            <Route path="/stake" element={<Stake />} />
+            <Route path="/staking" element={<Stake />} />
             <Route path="/kyc" element={<Kyc />} />
           </Routes>
           <Footer />
