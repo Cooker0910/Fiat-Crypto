@@ -33,7 +33,7 @@ const Stake = () => {
   const stakeContract = new web3.eth.Contract(stakingAbi, stakingAddress);
 
   useEffect(() => {
-    connectWallet
+    connectWallet()
   }, [])
 
   const changeType = (idx) => {
